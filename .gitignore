@@ -87,3 +87,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# ipynb
+.ipynb
+
+# swp files
+.*swp
