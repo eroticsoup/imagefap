@@ -25,20 +25,6 @@ class LinkSpider(scrapy.Spider):
             yield scrapy.Request(aurl_i, callback=self.parse_temp_url,
                     meta = {'_index' : i})
         
-        '''
-        # fetch images
-        for i,album_url in enumerate(album_urls):
-            soup = utils.get_soup('http://imagefap.com' + album_url)
-            for j,img_tag in enumerate(soup.findAll('a')):
-                if 'imagefapusercontent' in str(img_tag):
-                    img_url = img_tag.get('href')
-                    yield { 
-                            'path' : title, 
-                            'filename' : '{0}_{1}_{2}'.format(i,j,utils.get_base_name(img_url)),
-                            'url' : img_url
-                            }
-        '''
-
     def parse_temp_url(self,response):
         # get soup
         soup = BeautifulSoup(response.body,'lxml')
@@ -58,6 +44,6 @@ class LinkSpider(scrapy.Spider):
                 img_url = img_tag.get('href')
                 yield { 
                         'path' : self.title, 
-                        'filename' : '{0}_{1}_{2}'.format(i,j,utils.get_base_name(img_url)), 
+                        'filename' : '{0}_{1}_{2}'.format(i,j,utils.get_base_name(img_url)),
                         'url' : img_url
                         }
