@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup as bsp
 import requests
 import re
 
+import json
+
 _BASE_URL = 'http://www.imagefap.com'
 
 def get_soup(url):
@@ -98,3 +100,20 @@ def decorate_search_url(cat_id,page):
 
 def get_base_name(url):
     return os.path.basename(url).replace('/','')
+
+def read_json(filename):
+    # read from file
+    with open(filename) as f:
+        raw_content = f.read()
+    # fix it
+    content = '[' + ',\n'.join(raw_content.split('\n'))[:-2] + ']'
+    # return list of dictionaries
+    return json.loads(content)
+
+def read_json_(filename):
+    # read from file
+    with open(filename) as f:
+        content = f.read()
+    # return list of dictionaries
+    return json.loads(content)
+

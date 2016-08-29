@@ -21,3 +21,8 @@ class GalleryUrlItem(scrapy.Item):
     url = scrapy.Field()
     # gallery score
     score = scrapy.Field()
+
+class ImageItem(scrapy.Item):
+    # do not modify
+    image_urls = scrapy.Field()
+    images = scrapy.Field()
