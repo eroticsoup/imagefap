@@ -8,11 +8,16 @@
 import scrapy
 
 
-class IfScraperItem(scrapy.Item):
+class ImageUrlItem(scrapy.Item):
     # path to downloads folder
     path = scrapy.Field()
     # custom filename : preserve order
     filename = scrapy.Field()
     # url to download from
     url = scrapy.Field()
-    pass
+
+class GalleryUrlItem(scrapy.Item):
+    # gallery url
+    url = scrapy.Field()
+    # gallery score
+    score = scrapy.Field()

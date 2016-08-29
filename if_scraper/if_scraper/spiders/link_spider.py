@@ -7,9 +7,12 @@ class LinkSpider(scrapy.Spider):
     name = 'link_spider'
     start_urls = []
 
-    def __init__(self, url):
+    def __init__(self, url=None, urls=None):
         # add start_url to our seed list
-        self.start_urls.append(url)
+        if url:
+            self.start_urls.append(url)
+        else:
+            self.start_urls = urls
 
     def parse(self, response):
         # get soup from response

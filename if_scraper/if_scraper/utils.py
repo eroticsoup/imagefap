@@ -23,10 +23,12 @@ def re_extract_score(tag_text):
 
 # extract score
 def get_score(soup):
-    score_tag = soup.find('table', { 'align' : 'center' }).find('font')
-    if score_tag is None:
-        return 0.0
-    return re_extract_score(score_tag.text)
+    table_tag = soup.find('table', { 'align' : 'center' })
+    if table_tag:
+        score_tag = table_tag.find('font')
+        if score_tag:
+            return re_extract_score(score_tag.text)
+    return 0.0
 
 # get album parameters
 #   returns [ uploader, max_pages, score ]
@@ -86,7 +88,7 @@ def util_strip_album_url(album_url):
 def decorate_album_url(album_url,pid):
     return '{0}&page={1}&view=0'.format(album_url,pid)
 
-def util_decorate_search_url(cat_id,page):
+def decorate_search_url(cat_id,page):
     ##
     # 'http://www.imagefap.com/gallery.php?type=1&gen=54&userid=&search=&page=1000'
     ##
