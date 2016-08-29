@@ -93,3 +93,6 @@ ENV/
 
 # swp files
 .*swp
+
+# ignore output json files
+*.json
